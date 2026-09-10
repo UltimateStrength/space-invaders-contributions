@@ -10,6 +10,10 @@ export type Options = {
 
 export type Hit = { x: number; y: number; t: number; i: number };
 
+// fraction of the total loop a laser bolt takes to travel from the ship to its target
+export const getTravelFraction = (chainLength: number) =>
+  Math.min(0.03, 4 / chainLength);
+
 // sprite authored on a 0..512 viewBox, fill inherited from --cs
 // (see assets/nave.svg)
 const SHIP_PATH =
@@ -69,8 +73,7 @@ export const createShip = (
   const bulletSize = sizeDot * BULLET_RECT_RATIO.size * 1.5;
   const bulletRadius =
     bulletSize * (BULLET_RECT_RATIO.radius / BULLET_RECT_RATIO.size);
-  // fraction of the total loop a laser bolt takes to travel from the ship to its target
-  const travel = Math.min(0.03, 4 / chain.length);
+  const travel = getTravelFraction(chain.length);
   const eps = 0.0001;
 
   const bulletStyles: string[] = [];

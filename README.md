@@ -1,6 +1,6 @@
 # space-invaders-contributions
 
-[![release](https://img.shields.io/badge/release-v0.1.0-blueviolet?style=flat-square)](https://github.com/UltimateStrength/space-invaders-contributions/releases)
+[![release](https://img.shields.io/badge/release-v0.2.0-blueviolet?style=flat-square)](https://github.com/UltimateStrength/space-invaders-contributions/releases)
 [![build](https://img.shields.io/github/actions/workflow/status/UltimateStrength/space-invaders-contributions/main.yml?branch=main&style=flat-square)](https://github.com/UltimateStrength/space-invaders-contributions/actions)
 ![license](https://img.shields.io/github/license/UltimateStrength/space-invaders-contributions?style=flat-square)
 

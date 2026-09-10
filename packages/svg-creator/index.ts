@@ -13,7 +13,7 @@ import type {
   Empty,
 } from "@space-invaders-contributions/types/grid";
 import type { Point } from "@space-invaders-contributions/types/point";
-import { createShip } from "./ship";
+import { createShip, getTravelFraction } from "./ship";
 import { createGrid } from "./grid";
 import { h } from "./xml-utils";
 import { minifyCss } from "./css-utils";
@@ -57,6 +57,7 @@ const createLivingCells = (
   }));
 
   const grid = copyGrid(grid0);
+  const travel = getTravelFraction(chain.length);
   for (let i = 0; i < chain.length; i++) {
     const snake = chain[i];
     const x = getHeadX(snake);
@@ -65,7 +66,8 @@ const createLivingCells = (
     if (isInside(grid, x, y) && !isEmpty(getColor(grid, x, y))) {
       setColorEmpty(grid, x, y);
       const cell = livingCells.find((c) => c.x === x && c.y === y)!;
-      cell.t = i / chain.length;
+      // the cell dies when the laser actually reaches it, not when it's fired
+      cell.t = Math.min(1, i / chain.length + travel);
       cell.step = i;
     }
   }
@@ -88,8 +90,8 @@ export const createSvg = (
   const livingCells = createLivingCells(grid, chain, cells);
 
   const hits = livingCells
-    .filter((c): c is typeof c & { t: number; step: number } => c.t !== null)
-    .map(({ x, y, t, step }) => ({ x, y, t, i: step }));
+    .filter((c): c is typeof c & { t: number; step: number } => c.step !== null)
+    .map(({ x, y, step }) => ({ x, y, t: step / chain.length, i: step }));
 
   const shipRowY = (grid.height + 2) * drawOptions.sizeCell;
 
