@@ -1,7 +1,7 @@
 {
   "name": "space-invaders-contributions",
   "description": "Turns your GitHub contribution graph into a space invaders animation",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "repository": "github:UltimateStrength/space-invaders-contributions",
   "devDependencies": {

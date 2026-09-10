@@ -57,7 +57,6 @@ const createLivingCells = (
   }));
 
   const grid = copyGrid(grid0);
-  const travel = getTravelFraction(chain.length);
   for (let i = 0; i < chain.length; i++) {
     const snake = chain[i];
     const x = getHeadX(snake);
@@ -66,7 +65,9 @@ const createLivingCells = (
     if (isInside(grid, x, y) && !isEmpty(getColor(grid, x, y))) {
       setColorEmpty(grid, x, y);
       const cell = livingCells.find((c) => c.x === x && c.y === y)!;
-      // the cell dies when the laser actually reaches it, not when it's fired
+      // the cell dies when the laser actually reaches it, not when it's
+      // fired: travel time depends on how far the target is from the ship
+      const travel = getTravelFraction(x, x, y, grid.height, chain.length);
       cell.t = Math.min(1, i / chain.length + travel);
       cell.step = i;
     }

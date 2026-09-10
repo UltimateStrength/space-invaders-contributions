@@ -10,9 +10,30 @@ export type Options = {
 
 export type Hit = { x: number; y: number; t: number; i: number };
 
+// how many rows below the grid the ship flies on (see shipRowY in index.ts)
+export const SHIP_ROW_OFFSET = 2;
+
+// how many cells (in grid units) a laser bolt crosses per animation step,
+// so bolts fired from farther away actually take longer to land
+const BULLET_SPEED_CELLS_PER_STEP = 3;
+
 // fraction of the total loop a laser bolt takes to travel from the ship to its target
-export const getTravelFraction = (chainLength: number) =>
-  Math.min(0.03, 4 / chainLength);
+export const getTravelFraction = (
+  startX: number,
+  targetX: number,
+  targetY: number,
+  gridHeight: number,
+  chainLength: number,
+) => {
+  const dx = targetX - startX;
+  const dy = gridHeight + SHIP_ROW_OFFSET - targetY;
+  const distanceCells = Math.hypot(dx, dy);
+
+  return Math.min(
+    0.5,
+    distanceCells / BULLET_SPEED_CELLS_PER_STEP / chainLength,
+  );
+};
 
 // sprite authored on a 0..512 viewBox, fill inherited from --cs
 // (see assets/nave.svg)
@@ -70,10 +91,10 @@ export const createShip = (
     style: `transform:${shipTransform(x)}`,
   }));
 
-  const bulletSize = sizeDot * BULLET_RECT_RATIO.size * 1.5;
+  const bulletSize = sizeDot * BULLET_RECT_RATIO.size * 0.7;
   const bulletRadius =
     bulletSize * (BULLET_RECT_RATIO.radius / BULLET_RECT_RATIO.size);
-  const travel = getTravelFraction(chain.length);
+  const gridHeight = rowY / sizeCell - SHIP_ROW_OFFSET;
   const eps = 0.0001;
 
   const bulletStyles: string[] = [];
@@ -92,6 +113,13 @@ export const createShip = (
     const startTransform = `translate(${startCx.toFixed(1)}px,${startCy.toFixed(1)}px)`;
     const endTransform = `translate(${endCx.toFixed(1)}px,${endCy.toFixed(1)}px)`;
 
+    const travel = getTravelFraction(
+      startX,
+      hit.x,
+      hit.y,
+      gridHeight,
+      chain.length,
+    );
     const t0 = Math.max(0, hit.t - eps);
     const t1 = Math.min(1, hit.t + travel);
 
