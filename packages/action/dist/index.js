@@ -102,7 +102,12 @@ var percent = (x) => parseFloat((x * 100).toFixed(2)).toString() + "%", mergeKey
 }, createAnimation = (name, keyframes) => `@keyframes ${name}{` + mergeKeyFrames(keyframes).map(({ style, ts }) => ts.map(percent).join(",") + `{${style}}`).join("") + "}", minifyCss = (css) => css.replace(/\s+/g, " ").replace(/.\s+[,;:{}()]/g, (a) => a.replace(/\s+/g, "")).replace(/[,;:{}()]\s+./g, (a) => a.replace(/\s+/g, "")).replace(/.\s+[,;:{}()]/g, (a) => a.replace(/\s+/g, "")).replace(/[,;:{}()]\s+./g, (a) => a.replace(/\s+/g, "")).replace(/\;\s*\}/g, "}").trim();
 
 // ../svg-creator/ship.ts
-var SHIP_PATH = "M236,0 L231,105 L194,111 L194,317 L175,317 L171,212 L123,217 L123,352 L91,354 L86,388 L69,387 L68,286 L21,283 L17,436 L86,441 L93,476 L157,476 L163,511 L208,510 L212,476 L229,477 L234,511 L279,510 L283,476 L300,477 L303,510 L348,511 L354,476 L418,476 L425,441 L493,438 L494,287 L443,286 L442,387 L425,388 L420,354 L388,352 L388,217 L340,212 L336,317 L317,317 L317,111 L283,105 L283,4 Z", SPRITE_VIEWBOX = 512, BULLET_RECT_RATIO, removeInterpolatedPositions = (arr) => arr.filter((u, i, arr) => {
+var SHIP_ROW_OFFSET = 2, BULLET_SPEED_CELLS_PER_STEP = 3, getTravelFraction = (startX, targetX, targetY, gridHeight, chainLength) => {
+  const dx = targetX - startX;
+  const dy = gridHeight + SHIP_ROW_OFFSET - targetY;
+  const distanceCells = Math.hypot(dx, dy);
+  return Math.min(0.5, distanceCells / BULLET_SPEED_CELLS_PER_STEP / chainLength);
+}, SHIP_PATH = "M236,0 L231,105 L194,111 L194,317 L175,317 L171,212 L123,217 L123,352 L91,354 L86,388 L69,387 L68,286 L21,283 L17,436 L86,441 L93,476 L157,476 L163,511 L208,510 L212,476 L229,477 L234,511 L279,510 L283,476 L300,477 L303,510 L348,511 L354,476 L418,476 L425,441 L493,438 L494,287 L443,286 L442,387 L425,388 L420,354 L388,352 L388,217 L340,212 L336,317 L317,317 L317,111 L283,105 L283,4 Z", SPRITE_VIEWBOX = 512, BULLET_RECT_RATIO, removeInterpolatedPositions = (arr) => arr.filter((u, i, arr) => {
   if (i - 1 < 0 || i + 1 >= arr.length)
     return true;
   const a = arr[i - 1];
@@ -124,9 +129,9 @@ var SHIP_PATH = "M236,0 L231,105 L194,111 L194,317 L175,317 L171,212 L123,217 L1
     t,
     style: `transform:${shipTransform(x)}`
   }));
-  const bulletSize = sizeDot * BULLET_RECT_RATIO.size * 1.5;
+  const bulletSize = sizeDot * BULLET_RECT_RATIO.size * 0.7;
   const bulletRadius = bulletSize * (BULLET_RECT_RATIO.radius / BULLET_RECT_RATIO.size);
-  const travel = Math.min(0.03, 4 / chain.length);
+  const gridHeight = rowY / sizeCell - SHIP_ROW_OFFSET;
   const eps = 0.0001;
   const bulletStyles = [];
   const bulletElements = [];
@@ -139,6 +144,7 @@ var SHIP_PATH = "M236,0 L231,105 L194,111 L194,317 L175,317 L171,212 L123,217 L1
     const endCy = hit.y * sizeCell + sizeCell / 2 - bulletSize / 2;
     const startTransform = `translate(${startCx.toFixed(1)}px,${startCy.toFixed(1)}px)`;
     const endTransform = `translate(${endCx.toFixed(1)}px,${endCy.toFixed(1)}px)`;
+    const travel = getTravelFraction(startX, hit.x, hit.y, gridHeight, chain.length);
     const t0 = Math.max(0, hit.t - eps);
     const t1 = Math.min(1, hit.t + travel);
     bulletStyles.push(createAnimation(id, [
@@ -244,7 +250,8 @@ var getCellsFromGrid = ({ width, height }) => Array.from({ length: width }, (_, 
     if (isInside(grid, x, y) && !isEmpty(getColor(grid, x, y))) {
       setColorEmpty(grid, x, y);
       const cell = livingCells.find((c) => c.x === x && c.y === y);
-      cell.t = i / chain.length;
+      const travel = getTravelFraction(x, x, y, grid.height, chain.length);
+      cell.t = Math.min(1, i / chain.length + travel);
       cell.step = i;
     }
   }
@@ -254,7 +261,7 @@ var getCellsFromGrid = ({ width, height }) => Array.from({ length: width }, (_, 
   const height = (grid.height + 5) * drawOptions.sizeCell;
   const duration = animationOptions.stepDurationMs * chain.length;
   const livingCells = createLivingCells(grid, chain, cells);
-  const hits = livingCells.filter((c) => c.t !== null).map(({ x, y, t, step }) => ({ x, y, t, i: step }));
+  const hits = livingCells.filter((c) => c.step !== null).map(({ x, y, step }) => ({ x, y, t: step / chain.length, i: step }));
   const shipRowY = (grid.height + 2) * drawOptions.sizeCell;
   const elements = [
     createGrid(livingCells, drawOptions, duration),

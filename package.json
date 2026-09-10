@@ -1,7 +1,7 @@
 {
   "name": "space-invaders-contributions",
   "description": "Turns your GitHub contribution graph into a space invaders animation",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "license": "Unlicense",
   "private": true,
   "repository": "github:UltimateStrength/space-invaders-contributions",
@@ -18,10 +18,10 @@
   "scripts": {
     "type": "tsc",
     "lint": "prettier -c '**/*.{ts,js,json,md,yml,yaml}' '!packages/*/dist/**'",
-    "dev:demo": "( cd packages/demo ; npm run dev )",
-    "build:demo": "( cd packages/demo ; npm run build )",
-    "build:action": "( cd packages/action ; npm run build )",
-    "build:lib": "( cd packages/space-invaders-contributions ; npm run build )",
-    "publish:lib": "( cd packages/space-invaders-contributions/dist ; npm publish )"
+    "dev:demo": "npm --prefix packages/demo run dev",
+    "build:demo": "npm --prefix packages/demo run build",
+    "build:action": "npm --prefix packages/action run build",
+    "build:lib": "npm --prefix packages/space-invaders-contributions run build",
+    "publish:lib": "npm --prefix packages/space-invaders-contributions/dist publish"
   }
 }
