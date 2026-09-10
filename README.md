@@ -98,6 +98,14 @@ The GitHub Action, contribution-grid fetching, theming, and SVG/CSS animation pi
 
 The order invaders get destroyed in is computed by a pathfinding [solver](./packages/solver/README.md) that plans a route for a virtual snake eating every cell without colliding with itself — that route is never rendered, it's only used as the chronological firing order for the ship.
 
+## Credits
+
+This project is built on top of [Platane/snk](https://github.com/Platane/snk) — the contribution-grid fetching, theming, and SVG/CSS animation pipeline all come from that project. Huge thanks to [@Platane](https://github.com/Platane) for the original engine; without it this wouldn't exist.
+
+## License
+
+[Unlicense](./LICENSE) — public domain. Use it for anything, no attribution needed.
+
 ## Contribution Policy
 
 Issues and PRs are welcome.

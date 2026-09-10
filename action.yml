@@ -2,6 +2,10 @@ name: "space-invaders-contributions"
 description: "Turns your GitHub contribution graph into a space invaders animation: a ship blasts each contribution square, in the order you made it. Outputs an animated SVG."
 author: "UltimateStrength"
 
+branding:
+  icon: "zap"
+  color: "purple"
+
 runs:
   using: node24
   main: packages/action/dist/index.js

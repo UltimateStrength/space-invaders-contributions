@@ -2,6 +2,7 @@
   "name": "space-invaders-contributions",
   "description": "Turns your GitHub contribution graph into a space invaders animation",
   "version": "0.3.0",
+  "license": "Unlicense",
   "private": true,
   "repository": "github:UltimateStrength/space-invaders-contributions",
   "devDependencies": {
