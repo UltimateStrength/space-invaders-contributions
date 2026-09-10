@@ -1,5 +1,5 @@
-import type { Color, Empty } from "@snk/types/grid";
-import type { Point } from "@snk/types/point";
+import type { Color, Empty } from "@space-invaders-contributions/types/grid";
+import type { Point } from "@space-invaders-contributions/types/point";
 import { createAnimation } from "./css-utils";
 import { h } from "./xml-utils";
 

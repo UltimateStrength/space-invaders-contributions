@@ -1,10 +1,10 @@
 import "../utils/menu";
-import { getBestTunnel } from "@snk/solver/getBestTunnel";
-import { createOutside } from "@snk/solver/outside";
-import type { Color } from "@snk/types/grid";
-import { getColor } from "@snk/types/grid";
-import type { Point } from "@snk/types/point";
-import { getSnakeLength } from "@snk/types/snake";
+import { getBestTunnel } from "@space-invaders-contributions/solver/getBestTunnel";
+import { createOutside } from "@space-invaders-contributions/solver/outside";
+import type { Color } from "@space-invaders-contributions/types/grid";
+import { getColor } from "@space-invaders-contributions/types/grid";
+import type { Point } from "@space-invaders-contributions/types/point";
+import { getSnakeLength } from "@space-invaders-contributions/types/snake";
 import { createCanvas } from "../utils/canvas";
 import { grid, snake } from "../utils/sample";
 

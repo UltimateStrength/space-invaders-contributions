@@ -1,7 +1,7 @@
 import "../utils/menu";
-import { getBestRoute } from "@snk/solver/getBestRoute";
-import { getPathToPose } from "@snk/solver/getPathToPose";
-import { createSvg } from "@snk/svg-creator";
+import { getBestRoute } from "@space-invaders-contributions/solver/getBestRoute";
+import { getPathToPose } from "@space-invaders-contributions/solver/getPathToPose";
+import { createSvg } from "@space-invaders-contributions/svg-creator";
 import { drawOptions } from "../utils/canvas";
 import { grid, snake } from "../utils/sample";
 

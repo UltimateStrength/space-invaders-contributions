@@ -1,9 +1,16 @@
 import { it, expect } from "bun:test";
 import { getBestRoute } from "../getBestRoute";
-import { Color, createEmptyGrid, setColor } from "@snk/types/grid";
-import { createSnakeFromCells, snakeToCells } from "@snk/types/snake";
-import * as grids from "@snk/types/__fixtures__/grid";
-import { snake3 } from "@snk/types/__fixtures__/snake";
+import {
+  Color,
+  createEmptyGrid,
+  setColor,
+} from "@space-invaders-contributions/types/grid";
+import {
+  createSnakeFromCells,
+  snakeToCells,
+} from "@space-invaders-contributions/types/snake";
+import * as grids from "@space-invaders-contributions/types/__fixtures__/grid";
+import { snake3 } from "@space-invaders-contributions/types/__fixtures__/snake";
 
 it("should find best route", () => {
   const snk0 = [

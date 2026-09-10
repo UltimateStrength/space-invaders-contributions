@@ -1,7 +1,7 @@
-import { getColor } from "@snk/types/grid";
+import { getColor } from "@space-invaders-contributions/types/grid";
 import { pathRoundedRect } from "./pathRoundedRect";
-import type { Grid, Color } from "@snk/types/grid";
-import type { Point } from "@snk/types/point";
+import type { Grid, Color } from "@space-invaders-contributions/types/grid";
+import type { Point } from "@space-invaders-contributions/types/point";
 
 type Options = {
   colorDots: Record<Color, string>;

@@ -1,11 +1,10 @@
-import { getForgejoUserContribution } from "@snk/forgejo-user-contribution";
-import type { AnimationOptions } from "@snk/gif-creator";
-import { getGithubUserContribution } from "@snk/github-user-contribution";
-import { getGitlabUserContribution } from "@snk/gitlab-user-contribution";
-import { getBestRoute } from "@snk/solver/getBestRoute";
-import { getPathToPose } from "@snk/solver/getPathToPose";
-import type { DrawOptions } from "@snk/svg-creator";
-import { snake4 } from "@snk/types/__fixtures__/snake";
+import { getForgejoUserContribution } from "@space-invaders-contributions/forgejo-user-contribution";
+import { getGithubUserContribution } from "@space-invaders-contributions/github-user-contribution";
+import { getGitlabUserContribution } from "@space-invaders-contributions/gitlab-user-contribution";
+import { getBestRoute } from "@space-invaders-contributions/solver/getBestRoute";
+import { getPathToPose } from "@space-invaders-contributions/solver/getPathToPose";
+import type { DrawOptions } from "@space-invaders-contributions/svg-creator";
+import { snake4 } from "@space-invaders-contributions/types/__fixtures__/snake";
 import { cellsToGrid } from "./cellsToGrid";
 
 export { basePalettes, palettes } from "./palettes";
@@ -20,8 +19,10 @@ export type Source =
   | { platform: "gitlab"; username: string; baseUrl?: string }
   | { platform: "forgejo"; username: string; baseUrl: string };
 
+export type AnimationOptions = { stepDurationMs: number };
+
 export type Output = {
-  format: "svg" | "gif";
+  format: "svg";
   drawOptions: DrawOptions;
   animationOptions: AnimationOptions;
 };
@@ -44,7 +45,7 @@ export const getUserContribution = async (source: Source) => {
   }
 };
 
-export const generateSnakeAnimation = async (
+export const generateAnimation = async (
   source: Source,
   outputs: (Output | null)[],
 ) => {
@@ -64,13 +65,10 @@ export const generateSnakeAnimation = async (
       switch (format) {
         case "svg": {
           console.log(`🖌 creating svg (outputs[${i}])`);
-          const { createSvg } = await import("@snk/svg-creator");
+          const { createSvg } = await import(
+            "@space-invaders-contributions/svg-creator"
+          );
           return createSvg(grid, cells, chain, drawOptions, animationOptions);
-        }
-        case "gif": {
-          console.log(`📹 creating gif (outputs[${i}])`);
-          const { createGif } = await import("@snk/gif-creator");
-          return createGif(grid, cells, chain, drawOptions, animationOptions);
         }
       }
     }),

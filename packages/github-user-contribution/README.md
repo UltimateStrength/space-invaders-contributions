@@ -1,11 +1,11 @@
-# @snk/github-user-contribution
+# @space-invaders-contributions/github-user-contribution
 
 Get the github user contribution graph
 
 ## Usage
 
 ```js
-const { cells, colorScheme } = await getGithubUserContribution("platane");
+const { cells, colorScheme } = await getGithubUserContribution("octocat");
 
 // colorScheme = [
 //    "#ebedf0",

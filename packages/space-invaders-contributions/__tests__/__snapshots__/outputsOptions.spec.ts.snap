@@ -1,0 +1,51 @@
+// Bun Snapshot v1, https://bun.sh/docs/test/snapshots
+
+exports[`should parse /out.svg?color_ship=orange&color_dots=#000,#111,#222,#333,#444 1`] = `
+{
+  "animationOptions": {
+    "stepDurationMs": 100,
+  },
+  "drawOptions": {
+    "colorDotBorder": "#1b1f230a",
+    "colorDots": [
+      "#000",
+      "#111",
+      "#222",
+      "#333",
+      "#444",
+    ],
+    "colorEmpty": "#000",
+    "colorShip": "orange",
+    "sizeCell": 16,
+    "sizeDot": 12,
+    "sizeDotBorderRadius": 2,
+  },
+  "filename": "/out.svg",
+  "format": "svg",
+}
+`;
+
+exports[`should parse /out.svg?{"color_ship":"yellow","color_dots":["#000","#111","#222","#333","#444"]} 1`] = `
+{
+  "animationOptions": {
+    "stepDurationMs": 100,
+  },
+  "drawOptions": {
+    "colorDotBorder": "#1b1f230a",
+    "colorDots": [
+      "#000",
+      "#111",
+      "#222",
+      "#333",
+      "#444",
+    ],
+    "colorEmpty": "#000",
+    "colorShip": "yellow",
+    "sizeCell": 16,
+    "sizeDot": 12,
+    "sizeDotBorderRadius": 2,
+  },
+  "filename": "/out.svg",
+  "format": "svg",
+}
+`;

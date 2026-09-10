@@ -1,5 +1,5 @@
 import { it, expect } from "bun:test";
-import { createSnakeFromCells } from "@snk/types/snake";
+import { createSnakeFromCells } from "@space-invaders-contributions/types/snake";
 import { getPathToPose } from "../getPathToPose";
 
 it("should fing path to pose", () => {

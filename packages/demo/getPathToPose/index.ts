@@ -1,6 +1,9 @@
 import "../utils/menu";
-import { getPathToPose } from "@snk/solver/getPathToPose";
-import { createSnakeFromCells, snakeToCells } from "@snk/types/snake";
+import { getPathToPose } from "@space-invaders-contributions/solver/getPathToPose";
+import {
+  createSnakeFromCells,
+  snakeToCells,
+} from "@space-invaders-contributions/types/snake";
 import { createCanvas } from "../utils/canvas";
 import { grid, snake } from "../utils/sample";
 

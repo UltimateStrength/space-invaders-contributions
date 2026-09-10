@@ -1,7 +1,7 @@
 import "../utils/menu";
-import { getBestRoute } from "@snk/solver/getBestRoute";
-import { step } from "@snk/solver/step";
-import { Color, copyGrid } from "@snk/types/grid";
+import { getBestRoute } from "@space-invaders-contributions/solver/getBestRoute";
+import { step } from "@space-invaders-contributions/solver/step";
+import { Color, copyGrid } from "@space-invaders-contributions/types/grid";
 import { createCanvas } from "../utils/canvas";
 import { grid, snake } from "../utils/sample";
 

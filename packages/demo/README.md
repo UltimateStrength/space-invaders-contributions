@@ -1,3 +1,3 @@
-# @snk/demo
+# @space-invaders-contributions/demo
 
-Contains various demo to test and validate some pieces of the algorithm.
+Contains various demos to test and validate pieces of the algorithm.

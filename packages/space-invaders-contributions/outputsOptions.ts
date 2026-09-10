@@ -1,14 +1,11 @@
-import type { AnimationOptions } from "@snk/gif-creator";
-import type { DrawOptions as DrawOptionsSvg } from "@snk/svg-creator";
-import type { DrawOptions as DrawOptionsGif } from "@snk/gif-creator";
+import type { DrawOptions } from "@space-invaders-contributions/svg-creator";
+import type { AnimationOptions } from "./generateAnimation";
 import { palettes } from "./palettes";
-
-type DrawOptions = DrawOptionsSvg & DrawOptionsGif;
 
 export const parseOutputsOption = (lines: string[]) => lines.map(parseEntry);
 
 export const parseEntry = (entry: string) => {
-  const m = entry.trim().match(/^(.+\.(svg|gif))(\?(.*)|\s*({.*}))?$/);
+  const m = entry.trim().match(/^(.+\.(svg))(\?(.*)|\s*({.*}))?$/);
 
   if (!m) return null;
 
@@ -35,7 +32,6 @@ export const parseEntry = (entry: string) => {
     ...palettes["default"],
   };
   const animationOptions: AnimationOptions = {
-    frameByStep: 1,
     stepDurationMs: 100,
   };
 
@@ -51,15 +47,13 @@ export const parseEntry = (entry: string) => {
     drawOptions.colorDots = colors;
     drawOptions.colorEmpty = colors[0];
   }
-  if (sp.has("color_snake")) drawOptions.colorSnake = sp.get("color_snake")!;
-  if (sp.has("color_background"))
-    drawOptions.colorBackground = sp.get("color_background")!;
+  if (sp.has("color_ship")) drawOptions.colorShip = sp.get("color_ship")!;
   if (sp.has("color_dot_border"))
     drawOptions.colorDotBorder = sp.get("color_dot_border")!;
 
   return {
     filename,
-    format: format as "svg" | "gif",
+    format: format as "svg",
     drawOptions,
     animationOptions,
   };

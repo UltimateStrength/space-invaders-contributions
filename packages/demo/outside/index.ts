@@ -1,6 +1,9 @@
 import "../utils/menu";
-import { createOutside, isOutside } from "@snk/solver/outside";
-import type { Color } from "@snk/types/grid";
+import {
+  createOutside,
+  isOutside,
+} from "@space-invaders-contributions/solver/outside";
+import type { Color } from "@space-invaders-contributions/types/grid";
 import { createCanvas } from "../utils/canvas";
 import { grid } from "../utils/sample";
 

@@ -1,7 +1,7 @@
-import * as grids from "@snk/types/__fixtures__/grid";
-import * as snakes from "@snk/types/__fixtures__/snake";
-import type { Snake } from "@snk/types/snake";
-import type { Grid } from "@snk/types/grid";
+import * as grids from "@space-invaders-contributions/types/__fixtures__/grid";
+import * as snakes from "@space-invaders-contributions/types/__fixtures__/snake";
+import type { Snake } from "@space-invaders-contributions/types/snake";
+import type { Grid } from "@space-invaders-contributions/types/grid";
 
 const sp = new URLSearchParams(window.location.search);
 

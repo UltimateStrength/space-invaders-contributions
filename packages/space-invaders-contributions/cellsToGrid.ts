@@ -3,7 +3,7 @@ import {
   createEmptyGrid,
   setColor,
   setColorEmpty,
-} from "@snk/types/grid";
+} from "@space-invaders-contributions/types/grid";
 
 export const cellsToGrid = (
   cells: { x: number; y: number; level: number }[],

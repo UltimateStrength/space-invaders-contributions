@@ -9,7 +9,7 @@ export const fetchGithubUserContributionHtml = async (userName: string) => {
   const res = await fetch(
     `https://github.com/users/${userName}/contributions`,
     {
-      headers: { "User-Agent": "me@platane.me" },
+      headers: { "User-Agent": "space-invaders-contributions" },
     },
   );
 

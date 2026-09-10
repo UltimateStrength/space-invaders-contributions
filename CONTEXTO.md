@@ -1,4 +1,8 @@
-Projeto base: fork de Platane/snk (https://github.com/Platane/snk)
+> Status: implementado. Este documento é o brief original do projeto, mantido
+> como registro histórico da especificação. O pipeline (extração do grid,
+> solver de rota, temas, Action) começou como base do projeto Platane/snk, mas
+> o projeto em si — nome, pacotes, Action, README — é o "space-invaders-contributions",
+> não um fork.
 
 Objetivo: substituir a animação da "cobra" por uma animação de Space Invaders,
 mantendo intacto todo o resto do pipeline (extração do grid de contribuições,
@@ -6,6 +10,7 @@ sistema de temas light/dark via CSS vars --c0 a --c4, GitHub Action, output
 para SVG).
 
 O que muda:
+
 - Remove a lógica de movimento/"comer" da cobra
 - Adiciona uma nave (sprite customizado, fornecido à parte) que se move no eixo X
   numa linha abaixo do grid de contribuições (equivalente à área onde hoje ficam
@@ -19,6 +24,7 @@ O que muda:
   configurável depois (linha, coluna, aleatório)
 
 Restrições técnicas (herdadas do snk, não mudar):
+
 - Animação 100% CSS via @keyframes, sem JS no SVG final (README-safe)
 - Precisa gerar variante light e dark
 - Loop contínuo e determinístico (calcula tudo antes, não é interativo)
@@ -26,6 +32,7 @@ Restrições técnicas (herdadas do snk, não mudar):
 Assets que vou fornecer: sprite da nave e do tiro (SVG ou path), vocês adaptam
 pro sistema de cores existente (usar var(--cs) como já é feito hoje pro corpo
 da cobra).
+
 ---
 
 Assets (vetorizados a partir dos PNGs fornecidos, cor sólida sem gradiente/sombra):

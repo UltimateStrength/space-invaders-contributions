@@ -1,4 +1,4 @@
-# @snk/github-user-contribution-service
+# @space-invaders-contributions/github-user-contribution-service
 
 Expose github-user-contribution as an endpoint. hosted on cloudflare
 

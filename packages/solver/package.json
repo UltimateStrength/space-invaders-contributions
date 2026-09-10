@@ -1,8 +1,8 @@
 {
-  "name": "@snk/solver",
+  "name": "@space-invaders-contributions/solver",
   "version": "1.0.0",
   "devDependencies": {
     "park-miller": "1.1.0",
-    "@snk/types": "1.0.0"
+    "@space-invaders-contributions/types": "1.0.0"
   }
 }

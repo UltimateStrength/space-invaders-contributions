@@ -2,7 +2,7 @@ import { getGithubUserContribution } from "..";
 import { describe, it, expect } from "bun:test";
 
 describe("getGithubUserContribution", () => {
-  const promise = getGithubUserContribution("platane", {
+  const promise = getGithubUserContribution("octocat", {
     githubToken: process.env.GITHUB_TOKEN!,
   });
 

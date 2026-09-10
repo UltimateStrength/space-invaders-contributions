@@ -1,5 +1,5 @@
 {
-  "name": "@snk/types",
+  "name": "@space-invaders-contributions/types",
   "version": "1.0.0",
   "devDependencies": {
     "park-miller": "1.1.0"

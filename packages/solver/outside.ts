@@ -5,9 +5,9 @@ import {
   isInside,
   setColor,
   setColorEmpty,
-} from "@snk/types/grid";
-import { around4 } from "@snk/types/point";
-import type { Color, Grid } from "@snk/types/grid";
+} from "@space-invaders-contributions/types/grid";
+import { around4 } from "@space-invaders-contributions/types/point";
+import type { Color, Grid } from "@space-invaders-contributions/types/grid";
 
 export type Outside = Grid & { __outside: true };
 

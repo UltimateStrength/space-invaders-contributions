@@ -1,0 +1,18 @@
+{
+  "name": "space-invaders-contributions",
+  "version": "1.0.0",
+  "bin": {
+    "space-invaders-contributions": "./cli.ts"
+  },
+  "scripts": {
+    "build": "bash build.sh"
+  },
+  "dependencies": {
+    "@space-invaders-contributions/forgejo-user-contribution": "1.0.0",
+    "@space-invaders-contributions/gitlab-user-contribution": "1.0.0",
+    "@space-invaders-contributions/github-user-contribution": "1.0.0",
+    "@space-invaders-contributions/solver": "1.0.0",
+    "@space-invaders-contributions/svg-creator": "1.0.0",
+    "@space-invaders-contributions/types": "1.0.0"
+  }
+}

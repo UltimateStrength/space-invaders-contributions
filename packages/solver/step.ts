@@ -5,8 +5,12 @@ import {
   isEmpty,
   isInside,
   setColorEmpty,
-} from "@snk/types/grid";
-import { getHeadX, getHeadY, Snake } from "@snk/types/snake";
+} from "@space-invaders-contributions/types/grid";
+import {
+  getHeadX,
+  getHeadY,
+  Snake,
+} from "@space-invaders-contributions/types/snake";
 
 export const step = (grid: Grid, stack: Color[], snake: Snake) => {
   const x = getHeadX(snake);

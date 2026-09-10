@@ -2,9 +2,9 @@ import { it, expect } from "bun:test";
 import * as fs from "fs";
 import * as path from "path";
 import { createSvg, DrawOptions } from "..";
-import * as grids from "@snk/types/__fixtures__/grid";
-import { snake3 as snake } from "@snk/types/__fixtures__/snake";
-import { getBestRoute } from "@snk/solver/getBestRoute";
+import * as grids from "@space-invaders-contributions/types/__fixtures__/grid";
+import { snake3 as snake } from "@space-invaders-contributions/types/__fixtures__/snake";
+import { getBestRoute } from "@space-invaders-contributions/solver/getBestRoute";
 
 const drawOptions: DrawOptions = {
   sizeDotBorderRadius: 2,
@@ -13,7 +13,7 @@ const drawOptions: DrawOptions = {
   colorDotBorder: "#1b1f230a",
   colorDots: { 1: "#9be9a8", 2: "#40c463", 3: "#30a14e", 4: "#216e39" },
   colorEmpty: "#ebedf0",
-  colorSnake: "purple",
+  colorShip: "purple",
   dark: {
     colorEmpty: "#161b22",
     colorDots: { 1: "#01311f", 2: "#034525", 3: "#0f6d31", 4: "#00c647" },

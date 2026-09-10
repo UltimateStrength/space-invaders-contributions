@@ -1,14 +1,14 @@
 import { drawGrid } from "./drawGrid";
 import { drawSnake, drawSnakeLerp } from "./drawSnake";
-import type { Grid, Color } from "@snk/types/grid";
-import type { Snake } from "@snk/types/snake";
-import type { Point } from "@snk/types/point";
+import type { Grid, Color } from "@space-invaders-contributions/types/grid";
+import type { Snake } from "@space-invaders-contributions/types/snake";
+import type { Point } from "@space-invaders-contributions/types/point";
 
 export type Options = {
   colorDots: Record<Color, string>;
   colorEmpty: string;
   colorDotBorder: string;
-  colorSnake: string;
+  colorShip: string;
   colorBackground?: string;
   sizeCell: number;
   sizeDot: number;

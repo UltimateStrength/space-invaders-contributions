@@ -1,13 +1,12 @@
 {
-  "name": "@snk/demo",
+  "name": "@space-invaders-contributions/demo",
   "version": "1.0.0",
   "dependencies": {
-    "@snk/action": "1.0.0",
-    "@snk/draw": "1.0.0",
-    "@snk/github-user-contribution": "1.0.0",
-    "@snk/solver": "1.0.0",
-    "@snk/svg-creator": "1.0.0",
-    "@snk/types": "1.0.0"
+    "@space-invaders-contributions/draw": "1.0.0",
+    "@space-invaders-contributions/github-user-contribution": "1.0.0",
+    "@space-invaders-contributions/solver": "1.0.0",
+    "@space-invaders-contributions/svg-creator": "1.0.0",
+    "@space-invaders-contributions/types": "1.0.0"
   },
   "devDependencies": {
     "@types/dat.gui": "0.7.13",

@@ -1,7 +1,7 @@
 {
-  "name": "@snk/draw",
+  "name": "@space-invaders-contributions/draw",
   "version": "1.0.0",
   "dependencies": {
-    "@snk/types": "1.0.0"
+    "@space-invaders-contributions/types": "1.0.0"
   }
 }

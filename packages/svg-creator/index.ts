@@ -4,14 +4,17 @@ import {
   isEmpty,
   isInside,
   setColorEmpty,
-} from "@snk/types/grid";
-import { getHeadX, getHeadY } from "@snk/types/snake";
-import type { Snake } from "@snk/types/snake";
-import type { Grid, Color, Empty } from "@snk/types/grid";
-import type { Point } from "@snk/types/point";
-import { createSnake } from "./snake";
+} from "@space-invaders-contributions/types/grid";
+import { getHeadX, getHeadY } from "@space-invaders-contributions/types/snake";
+import type { Snake } from "@space-invaders-contributions/types/snake";
+import type {
+  Grid,
+  Color,
+  Empty,
+} from "@space-invaders-contributions/types/grid";
+import type { Point } from "@space-invaders-contributions/types/point";
+import { createShip } from "./ship";
 import { createGrid } from "./grid";
-import { createStack } from "./stack";
 import { h } from "./xml-utils";
 import { minifyCss } from "./css-utils";
 
@@ -19,7 +22,7 @@ export type DrawOptions = {
   colorDots: Record<Color, string>;
   colorEmpty: string;
   colorDotBorder: string;
-  colorSnake: string;
+  colorShip: string;
   sizeCell: number;
   sizeDot: number;
   sizeDotBorderRadius: number;
@@ -27,7 +30,7 @@ export type DrawOptions = {
     colorDots: Record<Color, string>;
     colorEmpty: string;
     colorDotBorder?: string;
-    colorSnake?: string;
+    colorShip?: string;
   };
 };
 
@@ -43,11 +46,13 @@ const createLivingCells = (
 ) => {
   const livingCells: (Point & {
     t: number | null;
+    step: number | null;
     color: Color | Empty;
   })[] = (cells ?? getCellsFromGrid(grid0)).map(({ x, y }) => ({
     x,
     y,
     t: null,
+    step: null,
     color: getColor(grid0, x, y),
   }));
 
@@ -61,6 +66,7 @@ const createLivingCells = (
       setColorEmpty(grid, x, y);
       const cell = livingCells.find((c) => c.x === x && c.y === y)!;
       cell.t = i / chain.length;
+      cell.step = i;
     }
   }
 
@@ -81,16 +87,15 @@ export const createSvg = (
 
   const livingCells = createLivingCells(grid, chain, cells);
 
+  const hits = livingCells
+    .filter((c): c is typeof c & { t: number; step: number } => c.t !== null)
+    .map(({ x, y, t, step }) => ({ x, y, t, i: step }));
+
+  const shipRowY = (grid.height + 2) * drawOptions.sizeCell;
+
   const elements = [
     createGrid(livingCells, drawOptions, duration),
-    createStack(
-      livingCells,
-      drawOptions,
-      grid.width * drawOptions.sizeCell,
-      (grid.height + 2) * drawOptions.sizeCell,
-      duration,
-    ),
-    createSnake(chain, drawOptions, duration),
+    createShip(chain, hits, drawOptions, shipRowY, duration),
   ];
 
   const viewBox = [
@@ -116,7 +121,7 @@ export const createSvg = (
     }).replace("/>", ">"),
 
     "<desc>",
-    "Generated with https://github.com/Platane/snk",
+    "Generated with space-invaders-contributions",
     "</desc>",
 
     "<style>",
@@ -138,7 +143,7 @@ const generateColorVar = (drawOptions: DrawOptions) =>
   `
     :root {
     --cb: ${drawOptions.colorDotBorder};
-    --cs: ${drawOptions.colorSnake};
+    --cs: ${drawOptions.colorShip};
     --ce: ${drawOptions.colorEmpty};
     ${Object.entries(drawOptions.colorDots)
       .map(([i, color]) => `--c${i}:${color};`)
@@ -150,7 +155,7 @@ const generateColorVar = (drawOptions: DrawOptions) =>
     @media (prefers-color-scheme: dark) {
       :root {
         --cb: ${drawOptions.dark.colorDotBorder || drawOptions.colorDotBorder};
-        --cs: ${drawOptions.dark.colorSnake || drawOptions.colorSnake};
+        --cs: ${drawOptions.dark.colorShip || drawOptions.colorShip};
         --ce: ${drawOptions.dark.colorEmpty};
         ${Object.entries(drawOptions.dark.colorDots)
           .map(([i, color]) => `--c${i}:${color};`)

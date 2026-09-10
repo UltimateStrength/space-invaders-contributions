@@ -1,7 +1,7 @@
 import { expect, it } from "bun:test";
 import * as fs from "fs";
 import * as path from "path";
-import { generateSnakeAnimation } from "../generateSnakeAnimation";
+import { generateAnimation } from "../generateAnimation";
 import { parseOutputsOption } from "../outputsOptions";
 
 const silent = (handler: () => void | Promise<void>) => async () => {
@@ -15,24 +15,21 @@ const silent = (handler: () => void | Promise<void>) => async () => {
 };
 
 it(
-  "should generate contribution snake",
+  "should generate the space invaders animation",
   silent(async () => {
     const entries = [
       path.join(__dirname, "__snapshots__/out.svg"),
 
       path.join(__dirname, "__snapshots__/out-dark.svg") +
-        "?palette=github-dark&color_snake=orange",
-
-      path.join(__dirname, "__snapshots__/out.gif") +
-        "?color_snake=orange&color_dots=#d4e0f0,#8dbdff,#64a1f4,#4b91f1,#3c7dd9",
+        "?palette=github-dark&color_ship=orange",
     ];
 
     const outputs = parseOutputsOption(entries);
 
-    const results = await generateSnakeAnimation(
+    const results = await generateAnimation(
       {
         platform: "github",
-        username: "platane",
+        username: "octocat",
         githubToken: process.env.GITHUB_TOKEN!,
       },
       outputs,
@@ -40,11 +37,9 @@ it(
 
     expect(results[0]).toBeDefined();
     expect(results[1]).toBeDefined();
-    expect(results[2]).toBeDefined();
 
     fs.writeFileSync(outputs[0]!.filename, results[0]!);
     fs.writeFileSync(outputs[1]!.filename, results[1]!);
-    fs.writeFileSync(outputs[2]!.filename, results[2]!);
   }),
   { timeout: 2 * 60 * 1000 },
 );

@@ -1,14 +1,17 @@
 import { it, expect } from "bun:test";
 import { getBestRoute } from "../getBestRoute";
-import { snake3, snake4 } from "@snk/types/__fixtures__/snake";
+import {
+  snake3,
+  snake4,
+} from "@space-invaders-contributions/types/__fixtures__/snake";
 import {
   getHeadX,
   getHeadY,
   getSnakeLength,
   Snake,
   snakeWillSelfCollide,
-} from "@snk/types/snake";
-import { createFromSeed } from "@snk/types/__fixtures__/createFromSeed";
+} from "@space-invaders-contributions/types/snake";
+import { createFromSeed } from "@space-invaders-contributions/types/__fixtures__/createFromSeed";
 
 const n = 1000;
 

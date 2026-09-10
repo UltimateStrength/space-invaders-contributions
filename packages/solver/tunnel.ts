@@ -1,8 +1,16 @@
-import { getColor, isEmpty, isInside } from "@snk/types/grid";
-import { getHeadX, getHeadY, nextSnake } from "@snk/types/snake";
-import type { Snake } from "@snk/types/snake";
-import type { Grid } from "@snk/types/grid";
-import type { Point } from "@snk/types/point";
+import {
+  getColor,
+  isEmpty,
+  isInside,
+} from "@space-invaders-contributions/types/grid";
+import {
+  getHeadX,
+  getHeadY,
+  nextSnake,
+} from "@space-invaders-contributions/types/snake";
+import type { Snake } from "@space-invaders-contributions/types/snake";
+import type { Grid } from "@space-invaders-contributions/types/grid";
+import type { Point } from "@space-invaders-contributions/types/point";
 
 /**
  * get the sequence of snake to cross the tunnel

@@ -1,7 +1,7 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
-import { generateSnakeAnimation } from "generate-snake-animation/generateSnakeAnimation";
-import { parseOutputsOption } from "generate-snake-animation/outputsOptions";
+import { generateAnimation } from "space-invaders-contributions/generateAnimation";
+import { parseOutputsOption } from "space-invaders-contributions/outputsOptions";
 import * as githubAction from "./github-action";
 
 (async () => {
@@ -14,7 +14,6 @@ import * as githubAction from "./github-action";
       ...githubAction.getInput("outputs").split("\n"),
       //
       // legacy
-      githubAction.getInput("gif_out_path"),
       githubAction.getInput("svg_out_path"),
     ]
       .map((x) => x.trim())
@@ -22,7 +21,7 @@ import * as githubAction from "./github-action";
 
     const outputs = parseOutputsOption(outputsRaw);
 
-    const results = await generateSnakeAnimation(
+    const results = await generateAnimation(
       { platform: "github", username: userName, githubToken },
       outputs,
     );

@@ -6,7 +6,7 @@ import { $ } from "bun";
 
 const cliPath = path.resolve(__dirname, "../cli.ts");
 const tmpDir = fs.mkdtempSync(
-  path.join(os.tmpdir(), "generate-snake-animation-test-"),
+  path.join(os.tmpdir(), "space-invaders-contributions-test-"),
 );
 const outSvg = path.join(tmpDir, "out.svg");
 

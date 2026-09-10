@@ -1,6 +1,8 @@
-# @snk/solver
+# @space-invaders-contributions/solver
 
-Contains the algorithm to compute the best route given a grid and a starting position for the snake.
+Contains the algorithm that computes the order in which the contribution cells get destroyed.
+
+It works by finding the best route for a virtual snake that has to eat every colored cell of the grid, one color at a time, without colliding with itself. That route is not rendered directly (there is no snake on screen) — it's replayed as the chronological order the ship fires at each cell, and the timing the invaders (contribution cells) get destroyed in.
 
 ## Implementation
 

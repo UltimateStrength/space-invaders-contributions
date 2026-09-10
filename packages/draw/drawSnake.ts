@@ -1,9 +1,9 @@
 import { pathRoundedRect } from "./pathRoundedRect";
-import { snakeToCells } from "@snk/types/snake";
-import type { Snake } from "@snk/types/snake";
+import { snakeToCells } from "@space-invaders-contributions/types/snake";
+import type { Snake } from "@space-invaders-contributions/types/snake";
 
 type Options = {
-  colorSnake: string;
+  colorShip: string;
   sizeCell: number;
 };
 
@@ -18,7 +18,7 @@ export const drawSnake = (
     const u = (i + 1) * 0.6;
 
     ctx.save();
-    ctx.fillStyle = o.colorSnake;
+    ctx.fillStyle = o.colorShip;
     ctx.translate(cells[i].x * o.sizeCell + u, cells[i].y * o.sizeCell + u);
     ctx.beginPath();
     pathRoundedRect(
@@ -54,7 +54,7 @@ export const drawSnakeLerp = (
     const y = lerp(ki, snake0[i * 2 + 1], snake1[i * 2 + 1]) - 2;
 
     ctx.save();
-    ctx.fillStyle = o.colorSnake;
+    ctx.fillStyle = o.colorShip;
     ctx.translate(x * o.sizeCell + u, y * o.sizeCell + u);
     ctx.beginPath();
     pathRoundedRect(

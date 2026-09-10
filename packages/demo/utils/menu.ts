@@ -1,5 +1,5 @@
-import * as grids from "@snk/types/__fixtures__/grid";
-import * as snakes from "@snk/types/__fixtures__/snake";
+import * as grids from "@space-invaders-contributions/types/__fixtures__/grid";
+import * as snakes from "@space-invaders-contributions/types/__fixtures__/snake";
 import { GUI } from "dat.gui";
 import { grid, snake } from "./sample";
 

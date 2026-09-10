@@ -1,4 +1,4 @@
-import { getGithubUserContribution } from "@snk/github-user-contribution";
+import { getGithubUserContribution } from "@space-invaders-contributions/github-user-contribution";
 
 const cors =
   <
@@ -16,6 +16,7 @@ const cors =
     if (origin) {
       const { host, hostname } = new URL(origin);
 
+      // TODO: replace with the domain the demo site (packages/demo) is actually deployed to
       if (hostname === "localhost" || host === "platane.github.io")
         res.headers.set("Access-Control-Allow-Origin", origin);
     }

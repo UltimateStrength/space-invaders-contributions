@@ -1,7 +1,7 @@
 node_modules
 npm-debug.log*
 dist
-!svg-only/dist
+!packages/action/dist
 build
 .env
 .wrangler

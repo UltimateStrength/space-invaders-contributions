@@ -2,21 +2,21 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
 import { parseArgs } from "node:util";
-import type { Source } from "./generateSnakeAnimation";
+import type { Source } from "./generateAnimation";
 import { parseOutputsOption } from "./outputsOptions";
 
 /**
  * Usage:
- *   generate-snake-animation --github_user=<[host/]username> --output=<file> [--output=<file> ...]
- *   generate-snake-animation --gitlab_user=<[host/]username> --output=<file> [--output=<file> ...]
- *   generate-snake-animation --forgejo_user=<host/username>   --output=<file> [--output=<file> ...]
+ *   space-invaders-contributions --github_user=<[host/]username> --output=<file> [--output=<file> ...]
+ *   space-invaders-contributions --gitlab_user=<[host/]username> --output=<file> [--output=<file> ...]
+ *   space-invaders-contributions --forgejo_user=<host/username>   --output=<file> [--output=<file> ...]
  *
  * Examples:
- *   generate-snake-animation --github_user=platane --output=snake.svg
- *   generate-snake-animation --github_user=github.mycompany.com/platane --output=snake.svg   # GitHub Enterprise
- *   generate-snake-animation --gitlab_user=username --output=snake.svg?palette=gitlab
- *   generate-snake-animation --gitlab_user=gitlab.mycompany.com/username --output=snake.svg  # self-hosted
- *   generate-snake-animation --forgejo_user=codeberg.org/platane --output=snake.svg?palette=codeberg
+ *   space-invaders-contributions --github_user=octocat --output=invaders.svg
+ *   space-invaders-contributions --github_user=github.mycompany.com/octocat --output=invaders.svg   # GitHub Enterprise
+ *   space-invaders-contributions --gitlab_user=username --output=invaders.svg?palette=gitlab
+ *   space-invaders-contributions --gitlab_user=gitlab.mycompany.com/username --output=invaders.svg  # self-hosted
+ *   space-invaders-contributions --forgejo_user=codeberg.org/octocat --output=invaders.svg?palette=codeberg
  *
  * For GitHub, a github token it required ( read from GITHUB_TOKEN env var )
  */
@@ -39,16 +39,16 @@ if (set.length === 0) {
   console.error(
     [
       "Usage:",
-      "  generate-snake-animation --github_user=<[host/]username> --output=<file> [--output=<file> ...]",
-      "  generate-snake-animation --gitlab_user=<[host/]username> --output=<file> [--output=<file> ...]",
-      "  generate-snake-animation --forgejo_user=<host/username>   --output=<file> [--output=<file> ...]",
+      "  space-invaders-contributions --github_user=<[host/]username> --output=<file> [--output=<file> ...]",
+      "  space-invaders-contributions --gitlab_user=<[host/]username> --output=<file> [--output=<file> ...]",
+      "  space-invaders-contributions --forgejo_user=<host/username>   --output=<file> [--output=<file> ...]",
       "",
       "Examples:",
-      "  generate-snake-animation --github_user=platane --output=snake.svg",
-      "  generate-snake-animation --github_user=github.mycompany.com/platane --output=snake.svg   # GitHub Enterprise",
-      "  generate-snake-animation --gitlab_user=username --output=snake.svg?palette=gitlab",
-      "  generate-snake-animation --gitlab_user=gitlab.mycompany.com/username --output=snake.svg  # self-hosted",
-      "  generate-snake-animation --forgejo_user=codeberg.org/platane --output=snake.svg?palette=codeberg",
+      "  space-invaders-contributions --github_user=octocat --output=invaders.svg",
+      "  space-invaders-contributions --github_user=github.mycompany.com/octocat --output=invaders.svg   # GitHub Enterprise",
+      "  space-invaders-contributions --gitlab_user=username --output=invaders.svg?palette=gitlab",
+      "  space-invaders-contributions --gitlab_user=gitlab.mycompany.com/username --output=invaders.svg  # self-hosted",
+      "  space-invaders-contributions --forgejo_user=codeberg.org/octocat --output=invaders.svg?palette=codeberg",
     ].join("\n"),
   );
   process.exit(1);
@@ -101,8 +101,8 @@ const source: Source = (() => {
 })();
 
 const outputs = parseOutputsOption(output ?? []);
-const { generateSnakeAnimation } = await import("./generateSnakeAnimation.js");
-const results = await generateSnakeAnimation(source, outputs);
+const { generateAnimation } = await import("./generateAnimation.js");
+const results = await generateAnimation(source, outputs);
 
 outputs.forEach((out, i) => {
   const result = results[i];

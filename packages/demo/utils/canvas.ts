@@ -1,7 +1,10 @@
-import { Color, Grid } from "@snk/types/grid";
-import { drawLerpWorld, drawWorld } from "@snk/draw/drawWorld";
-import { Snake } from "@snk/types/snake";
-import type { DrawOptions as DrawOptions } from "@snk/svg-creator";
+import { Color, Grid } from "@space-invaders-contributions/types/grid";
+import {
+  drawLerpWorld,
+  drawWorld,
+} from "@space-invaders-contributions/draw/drawWorld";
+import { Snake } from "@space-invaders-contributions/types/snake";
+import type { DrawOptions as DrawOptions } from "@space-invaders-contributions/svg-creator";
 
 export const drawOptions: DrawOptions = {
   sizeDotBorderRadius: 2,
@@ -15,7 +18,7 @@ export const drawOptions: DrawOptions = {
     4: "#216e39",
   },
   colorEmpty: "#ebedf0",
-  colorSnake: "purple",
+  colorShip: "purple",
   dark: {
     colorEmpty: "#161b22",
     colorDots: { 1: "#01311f", 2: "#034525", 3: "#0f6d31", 4: "#00c647" },

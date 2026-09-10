@@ -1,7 +1,7 @@
 import { it, expect } from "bun:test";
-import { createEmptyGrid } from "@snk/types/grid";
-import { getHeadX, getHeadY } from "@snk/types/snake";
-import { snake3 } from "@snk/types/__fixtures__/snake";
+import { createEmptyGrid } from "@space-invaders-contributions/types/grid";
+import { getHeadX, getHeadY } from "@space-invaders-contributions/types/snake";
+import { snake3 } from "@space-invaders-contributions/types/__fixtures__/snake";
 import { getPathTo } from "../getPathTo";
 
 it("should find it's way in vaccum", () => {

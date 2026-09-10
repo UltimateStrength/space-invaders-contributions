@@ -1,8 +1,8 @@
 {
-  "name": "@snk/svg-creator",
+  "name": "@space-invaders-contributions/svg-creator",
   "version": "1.0.0",
   "dependencies": {
-    "@snk/types": "1.0.0",
-    "@snk/solver": "1.0.0"
+    "@space-invaders-contributions/types": "1.0.0",
+    "@space-invaders-contributions/solver": "1.0.0"
   }
 }

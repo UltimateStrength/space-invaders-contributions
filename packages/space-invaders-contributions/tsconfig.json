@@ -1,0 +1,22 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "types": ["node"],
+    "paths": {
+      "@space-invaders-contributions/forgejo-user-contribution": [
+        "../forgejo-user-contribution/index.ts"
+      ],
+      "@space-invaders-contributions/github-user-contribution": [
+        "../github-user-contribution/index.ts"
+      ],
+      "@space-invaders-contributions/gitlab-user-contribution": [
+        "../gitlab-user-contribution/index.ts"
+      ],
+      "@space-invaders-contributions/gif-creator": ["../gif-creator/index.ts"],
+      "@space-invaders-contributions/svg-creator": ["../svg-creator/index.ts"],
+      "@space-invaders-contributions/solver/*": ["../solver/*.ts"],
+      "@space-invaders-contributions/types/*": ["../types/*.ts"],
+      "@space-invaders-contributions/draw/*": ["../draw/*.ts"]
+    }
+  }
+}
