@@ -1,6 +1,6 @@
 name: "space-invaders-contributions"
 description: "Turns your GitHub contribution graph into a space invaders animation: a ship blasts each contribution square, in the order you made it. Outputs an animated SVG."
-author: "TODO: your name or GitHub handle"
+author: "UltimateStrength"
 
 runs:
   using: node24
