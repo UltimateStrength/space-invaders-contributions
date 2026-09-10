@@ -1,5 +1,5 @@
 name: "space-invaders-contributions"
-description: "Turns your GitHub contribution graph into a space invaders animation: a ship blasts each contribution square, in the order you made it. Outputs an animated SVG."
+description: "Turns your GitHub contribution graph into a space invaders animation: a ship blasts each square in the order you made it."
 author: "UltimateStrength"
 
 branding:
